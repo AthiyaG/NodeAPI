@@ -6,14 +6,37 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	</head>
-	<body>
+	<body ng-app="myApp">
 			<div class="jumbotron">
 				<h1 class="display-4">Hello, Expedia Air Team!</h1>
 				<p class="lead">This is a simple Node JS session </p>
 				<hr class="my-4">
 				<p>Introduces the basics of Node JS </p>
-				<a class="btn btn-primary btn-lg" href="#" role="button">Wish to Learn more?? Pls Google :P </a>
+				<a class="btn btn-primary btn-lg" href="/all" role="button" id="learnMore">Wish to Learn more?? Pls Google :P </a>
+			</div>
+			<div class="responsediv">
 			</div>
 	</body>
+	<script> 	
+	$(document).ready(function(){
+			$("#learnMore").click(function(){
+			$.ajax(
+			{
+				url: "#/all",
+				type: 'GET',
+				success: function(data){
+					console.log("hiiii.... got it");
+					$(".responsediv").html(data);
+				},
+				 error: function() {
+					$('.responsediv').html('<p>An error has occurred</p>');
+				},
+			}	
+		);
+    });
+});	
+	</script>
+	
 </html>
